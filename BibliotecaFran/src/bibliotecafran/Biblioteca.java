@@ -18,7 +18,7 @@ public class Biblioteca {
     
     public int cantidadLibros(int estado){
         int contador = 0;
-        for (int i = 0; libro.length < 10; i++) {
+        for (int i = 0; i < libro.length; i++) {
             if(libro[i] != null && libro[i].getEstado() == estado)
                 contador++;
         }
