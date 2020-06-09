@@ -14,11 +14,7 @@ public abstract class Empleado {
     }
 
     @Override
-    public String toString() {
-        return "Empleado{" + "legajo=" + legajo + ", nombre=" + nombre + ", sueldoBasico=" + sueldoBasico + '}';
-    }
+    public abstract String toString();
     
-    public float calcularSueldo(){
-        return sueldoBasico;
-    }
+    public abstract float calcularSueldo();
 }

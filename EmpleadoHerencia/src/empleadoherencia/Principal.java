@@ -7,10 +7,11 @@ public class Principal {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        ArrayList<Empleado> listaEmpleado = new ArrayList(1);
+        Empresa empresa = new Empresa();
 
         int opcion = -1;
         while (opcion != 0) {
+            Empleado nuevoEmpleado = null;
 
             System.out.println("Bienvenido al menu.");
             System.out.println("Ingrese 1 si es obrero. \n"
@@ -31,8 +32,8 @@ public class Principal {
                 System.out.println("Ingrese los dias trabajados: ");
                 int diasTrabajados = sc.nextInt();
                 
-                Obrero obrero = new Obrero(diasTrabajados, legajo, nombre, sueldoBasico);
-                listaEmpleado.add(obrero);
+                nuevoEmpleado = new Obrero(diasTrabajados, legajo, nombre, sueldoBasico);
+         
             }
             
             if(opcion == 2){
@@ -50,8 +51,8 @@ public class Principal {
                     presentismo = true;
                 }
                 
-                Administrativo admin = new Administrativo(presentismo, legajo, nombre, sueldoBasico);
-                listaEmpleado.add(admin);
+                nuevoEmpleado = new Administrativo(presentismo, legajo, nombre, sueldoBasico);
+                
             }
             
             if(opcion == 3){
@@ -65,21 +66,23 @@ public class Principal {
                 System.out.println("Ingrese el total de sus ventas: ");
                 float totalVentas = sc.nextFloat();
                 
-                Vendedor vendedor = new Vendedor(totalVentas, legajo, nombre, sueldoBasico);
-                listaEmpleado.add(vendedor);
+                nuevoEmpleado = new Vendedor(totalVentas, legajo, nombre, sueldoBasico);
+                
             }
             
             if(opcion == 0){
                 break;
             }
+            
+            empresa.agregarEmpleado(nuevoEmpleado);
         }
         
-        for (int i = 0; i < listaEmpleado.size(); i++) {
-            System.out.println(listaEmpleado.get(i).toString());
-            if(listaEmpleado is obrero){
-            
-            }
-        }
+        System.out.println("Ingrese el tipo de empleado del que quiere saber el sueldo: ");
+        int opcionTipo = sc.nextInt();
+        System.out.println(empresa.tipoSueldo(opcionTipo));
+        System.out.println("El total general es de: " + empresa.sueldoTotal());
+        System.out.println("Datos del empleado que menos cobra : \n"
+                + empresa.empleadoMenosPago());
+        System.out.println("Promedio de sueldo de los obreros: " + empresa.promedioSueldoObrero());
     }
-
 }
